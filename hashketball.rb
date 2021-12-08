@@ -1,3 +1,4 @@
+require 'pry'
 # Write your code below game_hash
 def game_hash
   {
@@ -127,3 +128,81 @@ def game_hash
 end
 
 # Write code here
+def find_player(player)
+  if game_hash[:home][:players].detect {|n| n[:player_name] == player}
+    index = game_hash[:home][:players].index {|x| x[:player_name] == player}
+    return game_hash[:home][:players][index]
+  else
+    index = game_hash[:away][:players].index {|x| x[:player_name] == player}
+    return game_hash[:away][:players][index]
+  end
+end
+
+# def find_player(player)
+#   game_hash.each do |team, data|
+#     data.each do |x, player_info|
+#         if x == :players
+#           player_info.each.with_index do |y, index|
+#             if y[:player_name] == player
+#               return index 
+#             end
+#           end
+#         end
+#     end
+#   end
+# end
+
+def num_points_scored(player)
+  find_player(player)[:points]
+end
+
+def shoe_size(player)
+  find_player(player)[:shoe]
+end
+
+def team_colors(team)
+  game_hash.each do |location, team_data|
+    team_data.each do |attribute, data|
+      if data == team
+        return game_hash[location][:colors]
+      end
+    end
+  end
+end
+
+def team_names
+  names = []
+  game_hash.each {|location, team_data|
+    team_data.each {|attribute, data|
+      if attribute == :team_name
+        names << data
+      end
+    }
+  }
+  names
+end
+
+
+#away: {
+  # team_name: "Charlotte Hornets",
+  # colors: ["Turquoise", "Purple"],
+  # players: 
+def player_numbers(team)
+  nums = []
+  game_hash.each do |location, team_data|
+    team_data.each do |attribute, data|
+      if data == team
+        game_hash[location][:players].each do |x|
+         nums << x[:number]
+        end
+      end
+    end
+  end
+  nums
+end
+
+def player_stats(name)
+  find_player(name)
+end
+
+puts player_stats("Alan Anderson")

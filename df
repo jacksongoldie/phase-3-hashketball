@@ -1,0 +1,17 @@
+
+[1mFrom:[0m /home/goldi/Development/code/Mod3/phase-3-hashketball/hashketball.rb:147 Object#find_player:
+
+    [1;34m141[0m: [32mdef[0m [1;34mfind_player[0m(player)
+    [1;34m142[0m:   game_hash.each [32mdo[0m |team, data|
+    [1;34m143[0m:     data.each [32mdo[0m |x, data|
+    [1;34m144[0m:       [32mif[0m x == [33m:players[0m
+    [1;34m145[0m:         data.find [32mdo[0m |p|
+    [1;34m146[0m:           p = player
+ => [1;34m147[0m:           binding.pry
+    [1;34m148[0m:           [32mreturn[0m game_hash[team][x][p]
+    [1;34m149[0m:         [32mend[0m
+    [1;34m150[0m:       [32mend[0m
+    [1;34m151[0m:     [32mend[0m
+    [1;34m152[0m:   [32mend[0m
+    [1;34m153[0m: [32mend[0m
+
